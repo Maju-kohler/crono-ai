@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Lexend Exa';
+  src: url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@600&display=swap');
+
+  font-weight: 600;
+  font-style: semibold;
+}
+
+h1{
+  font-family: 'Lexend Exa';
+  text-align: center;
+  font-size: 10em;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
