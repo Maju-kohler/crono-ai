@@ -1,3 +1,9 @@
+$background: #FEFAE0;
+$primary: #211A1D;
+$my-blue: #3993DD;
+$my-red: #F15156;
+
+
 @font-face {
   font-family: 'Lexend Exa';
   src: url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@600&display=swap');
@@ -12,8 +18,18 @@ h1{
   font-size: 10em;
 }
 
+h2{
+  position: fixed;
+  bottom: 0.5rem;
+  left: 1rem;
+  
+  font-family: 'Lexend Exa';
+  font-size: 1rem;
+  color: $my-red;
+}
+
 .button-container{
-  display: flex;
+  display: grid;
   justify-content: center;
   gap: 1rem;
 }

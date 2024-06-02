@@ -1,12 +1,33 @@
+$background: #FEFAE0;
+$primary: #211A1D;
+$my-blue: #3993DD;
+$my-red: #F15156;
+
+// @font-face {
+//   font-family: 'Lexend Exa';
+//   src: url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@600&display=swap');
+
+//   font-weight: 600;
+//   font-style: semibold;
+// }
+
 button {
+  width: 611px;
   padding: 1rem 2rem;
-  border: none;
   border-radius: 5px;
+  font-weight: 600;
+  font-family: 'Lexend Exa';
   cursor: pointer;
-  font-weight: bold;
+  transition: transform 250ms;
 
   &.primary {
-    background-color: #007bff;
-    color: #fff;
+    border: 3px solid $primary;
+    background-color: $background;
+    color: $primary;
+    font-size: 20px;
   }
+}
+
+button:hover{
+  transform: translateY(-3px);
 }
