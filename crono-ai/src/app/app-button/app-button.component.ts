@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button',
@@ -8,6 +9,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './app-button.component.scss'
 })
 export class AppButtonComponent {
+
+  constructor(private router: Router) { }
+
+  onClick(direc: string) {
+    this.router.navigate([direc]);
+    
+  }
+
   @Input() buttonText: string = '';
   @Input() buttonType: string = 'primary';
 }

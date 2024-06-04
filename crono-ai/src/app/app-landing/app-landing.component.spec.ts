@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppLandingComponent } from './app-landing.component';
+import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 
 describe('AppLandingComponent', () => {
   let component: AppLandingComponent;
@@ -8,7 +9,7 @@ describe('AppLandingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppLandingComponent]
+      imports: [AppLandingComponent, RouterLink, RouterOutlet, RouterLinkActive]
     })
     .compileComponents();
     
