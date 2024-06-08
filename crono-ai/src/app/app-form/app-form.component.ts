@@ -24,7 +24,7 @@ export class AppFormComponent {
   }
 
   onSubmit(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/schedule-menu']);
     //add behavior too generate schedule
   }
 }
