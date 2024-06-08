@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
-import { AppButtonComponent } from '../app-button/app-button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [AppButtonComponent],
+  imports: [],
   templateUrl: './app-landing.component.html',
   styleUrl: './app-landing.component.scss'
 })
 export class AppLandingComponent {
   title = 'Crono-ai';
 
+  constructor(private router: Router) { }
+
+  onClick(direc: string) {
+    this.router.navigate([direc]);
+  }
 
 }

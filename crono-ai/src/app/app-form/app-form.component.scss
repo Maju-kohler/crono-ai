@@ -1,0 +1,115 @@
+$background: #FEFAE0;
+$primary: #211A1D;
+$my-blue: #3993DD;
+$my-red: #F15156;
+
+
+@font-face {
+  font-family: 'Lexend Exa';
+  src: url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@600&display=swap');
+
+  font-weight: 600;
+  font-style: semibold;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Lexend Exa';
+  margin-top: 4em;
+}
+
+.form-container {
+  margin: 0 auto;
+  width: 35%;
+  padding: 20px;
+  border: 5px solid $primary;
+  border-radius: 25px;
+}
+
+.form-container label, input{
+  font-family: 'Lexend Exa';
+  margin-bottom: 12.5px;
+  margin-top: 4px;
+
+  // border: 1px solid green;
+}
+
+.form-container input{
+  height: 35px;
+  border: 3px solid $primary;
+  border-radius: 10px;
+  background-color: $background;
+}
+
+.scheduleInputs{
+  margin: 0 auto;
+  //border: 1px solid green;
+}
+
+.scheduleInputs input{
+  width: 100%;
+}
+
+.calendar-container{
+  //border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px 10px;
+  margin-bottom: 0;
+}
+
+.days-container {
+  //border: 1px solid blue;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.days-container label {
+  border: 3px solid $primary;
+  border-radius: 50%;
+  margin-right: 5px;
+  font-family: 'Lexend Exa';
+  padding: 10px 12.5px;
+
+  cursor: pointer;
+}
+
+.days-container input{
+  display: none;
+}
+
+.days-container input:checked + label{
+  background-color: $my-blue;
+}
+
+.botoes-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-family: 'Lexend Exa';
+  width: 40%;
+  height: 60px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 250ms;
+}
+
+button:hover{
+  transform: translateY(-3px);
+}
+
+.onCancel {
+  background-color: $my-red;
+  color: #fff;
+}
+
+.onSubmit {
+  background-color: #007bff;
+  color: #fff;
+}

@@ -1,1 +1,93 @@
-<p>app-form works!</p>
+<!-- <h1>New Schedule</h1>
+
+<div class="form-container">
+  <form #f="ngForm">
+    <label for="scheduleName">Schedule's name:</label>
+    <input type="text" id="scheduleName" [(ngModel)]="scheduleName" name="scheduleName" placeholder="Cooking Program">
+
+    <br>
+
+    <label for="objective">Objective to achieve:</label>
+    <input type="text" id="objective" [(ngModel)]="objective" name="objective" placeholder="Learn how to cook the basics">
+
+    <br>
+    <div class="calendar-container">
+      <label for="calendar_1">Starting period</label>
+      <label for="calendar_2">Ending period</label>
+      <label for="timePerDay">Time per day:</label>
+
+      <input type="date" id="calendar_1" [(ngModel)]="calendarData1" name="calendar1">
+      <input type="date" id="calendar_2" [(ngModel)]="calendarData2" name="calendar2">
+      <input type="text" id="timePerDay" [(ngModel)]="timePerDay" name="timePerDay" placeholder="hours"> 
+    </div>
+
+    <br>
+
+    <button class="cancel" type="button" (click)="onCancel()">Cancel</button>
+    <button type="submit" (click)="onSubmit()">Generate!</button>
+  </form>
+</div> -->
+
+<h1>New Schedule</h1>
+
+<div class="form-container">
+  <form #f="ngForm">
+    
+    <div class="scheduleInputs">
+      <label for="scheduleName">Schedule's name</label>
+      <br>
+      <input type="text" id="scheduleName" [(ngModel)]="scheduleName" name="scheduleName" placeholder="Cooking Program">
+
+      <br>
+
+      <label for="objective">Objective to achieve</label>
+      <br>
+      <input type="text" id="objective" [(ngModel)]="objective" name="objective" placeholder="Learn how to cook the basics">
+    </div>
+    <br>
+
+    <div class="calendar-container">
+      <label for="startingPeriod">Starting period</label>
+      <label for="endingPeriod">Ending period</label>
+      <label for="timePerDay">Time per day</label>
+
+      <br>
+
+      <input type="date" id="startingPeriod" [(ngModel)]="calendarData1" name="calendar1">
+      <input type="date" id="endingPeriod" [(ngModel)]="calendarData2" name="calendar2">
+      <input type="text" id="timePerDay" [(ngModel)]="timePerDay" name="timePerDay" placeholder="hours">
+    </div>
+    <br>
+
+    <label for="days">Days:</label>
+    <div class="days-container">
+      <input type="checkbox" id="day-S" name="day" value="Sunday">
+      <label for="day-S">S</label>
+      
+      <input type="checkbox" id="day-M" name="day" value="Monday">
+      <label for="day-M">M</label>
+      
+      <input type="checkbox" id="day-T" name="day" value="Tuesday">
+      <label for="day-T">T</label>
+      
+      <input type="checkbox" id="day-W" name="day" value="Wednesday">
+      <label for="day-W">W</label>
+
+      <input type="checkbox" id="day-Th" name="day" value="Thursday">
+      <label for="day-Th">T</label>
+      
+      <input type="checkbox" id="day-F" name="day" value="Friday">
+      <label for="day-F">F</label>
+
+      <input type="checkbox" id="day-Sa" name="day" value="Saturday">
+      <label for="day-Sa">S</label>
+    </div>
+
+    <br>
+
+    <div class="botoes-container">
+      <button class= "onSubmit" (click)="onSubmit()">Generate!</button>
+      <button class= "onCancel"  type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>
