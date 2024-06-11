@@ -6,7 +6,7 @@ import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/ge
 
 import { environment } from '../../environments/environment.development';
 import { ScheduleService } from '../schedule.service';
-
+import { ApiKeyService } from '../api-key.service';
 
 @Component({
   selector: 'app-app-form',
@@ -24,11 +24,30 @@ export class AppFormComponent {
 
   tasksArray: {day: string, task: string} [] = []
 
-  constructor (private router: Router, private scheduleService: ScheduleService) {}
+  geminiKey: string = '';
+  genAI: GoogleGenerativeAI | undefined;
+
+  constructor (
+    private router: Router, 
+    private scheduleService: ScheduleService, 
+    private apiKeyService: ApiKeyService
+  ) {}
+
+  ngOnInit():void {
+    this.apiKeyService.apiKey$.subscribe(name => {
+      this.geminiKey = name;
+    });
+  }
 
   async TestGeminiPro(){
     //Gemini client
-    const genAI = new GoogleGenerativeAI(environment.API_KEY);
+  if(!this.geminiKey){
+    console.error('API key is not available');
+      return;
+  }
+
+    //const genAI = new GoogleGenerativeAI(environment.API_KEY);
+    this.genAI = new GoogleGenerativeAI(this.geminiKey);
     const generationConfig = {
       safetySettings: [
         {
@@ -38,68 +57,37 @@ export class AppFormComponent {
       ],
       maxOutputTokens: 100,
     };
-    const model = genAI.getGenerativeModel({
+    const model = this.genAI.getGenerativeModel({
       model: 'gemini-pro',
       ...generationConfig,
     });
 
-    const prompt = `Write a schedule about ${ this.objective }, starting from ${ this.calendarData1 } to ${ this.calendarData2 }.  Consider that the tasks shall be executed in ${ this.timePerDay } hours each day. Write it in JSON format without markdown formatting, following the model [{"day": day in DD-MM-YYYY format, "task": task to be done }].`;
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-  //   const response = `json
-  //   [{
-  //     "day": "10-06-2024",
-  //     "task": "Introduction to coding concepts and programming languages (3 hours)"
-  //   },
-  //   {
-  //     "day": "11-06-2024",
-  //     "task": "Learn the basics of Python syntax and data types (3 hours)"
-  //   },
-  //   {
-  //     "day": "12-06-2024",
-  //     "task": "Practice writing simple Python programs (3 hours)"
-  //   },
-  //   {
-  //     "day": "13-06-2024",
-  //     "task": "Learn about control flow and loops in Python (3 hours)"
-  //   },
-  //       {
-  //     "day": "13-06-2024",
-  //     "task": "Learn about control flow and loops in Python (3 hours)"
-  //   },
-  //       {
-  //     "day": "13-06-2024",
-  //     "task": "Learn about control flow and loops in Python (3 hours)"
-  //   },
-  //   {
-  //     "day": "14-06-2024",
-  //     "task": "Build a small project using Python (3 hours)"
-  // }]`;
+    const prompt = `Write a schedule about ${ this.objective }, starting from ${ this.calendarData1 } to ${ this.calendarData2 }.  Consider that the tasks shall be executed in ${ this.timePerDay } hours each day. Write it in JSON format, single line and without markdown formatting, following the model [{"day": day in DD-MM-YYYY format, "task": task to be done }].`;
+    // const result = await model.generateContent(prompt);
+    // const response = await result.response;
 
-    //remove the word 'JSON' from the beggining
-    console.log(response.text());
+    const response = `[{"day": "11-06-2024", "task": "Research and gather information about France's history"}, {"day": "12-06-2024", "task": "Outline the essay structure and write the introduction"}, {"day": "13-06-2024", "task": "Write the body paragraphs covering key historical events and periods"}, {"day": "14-06-2024", "task": "Write the conclusion and revise and edit the essay"}]`
 
-    const answer = JSON.parse(response.text());
-    //const treatedJSON = answer.replace(/^json\s*/,'');
+    try {
+      //const parsedResponse = JSON.parse(response.text());
+      const parsedResponse = JSON.parse(response);
 
-    // console.log(response.text());
-    // console.log('response:' + response);
-
-    //This part should go to schedule component
-    
-
-    // if (answer && typeof answer === 'object') {
-    //   // Log the 'day' entry for each item in the array
-    //   answer.forEach((item: { day: string }) => {
-    //     console.log(item.day);
-    //   });
-
-    // } else {
-    //   console.error("Parsed object does not contain a valid array.");
-    // }
-
-    return answer;
+      if (Array.isArray(parsedResponse)) {
+        for (const item of parsedResponse) {
+          if (!item.hasOwnProperty('day') || !item.hasOwnProperty('task')) {
+            throw new Error('Invalid JSON structure');
+          }
+        }
+        return parsedResponse;
+      } else {
+        throw new Error('Invalid JSON structure');
+      }
+    } catch (e) {
+      console.error('Error parsing JSON:', e);
+      return [];
+    }
   }
+
 
   onCancel(){
     this.router.navigate(['/']);

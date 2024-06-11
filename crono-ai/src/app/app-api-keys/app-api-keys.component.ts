@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { ApiKeyService } from '../api-key.service';
+
 @Component({
   selector: 'app-api-keys',
   standalone: true,
@@ -14,7 +16,7 @@ export class AppApiKeysComponent {
   geminiAPI: string = '';
   calendarAPI: string = '';
 
-  constructor(private router: Router){ }
+  constructor(private router: Router, private apiKeyService: ApiKeyService){ }
 
   onCancel(){
     this.router.navigate(['/']);
@@ -22,6 +24,7 @@ export class AppApiKeysComponent {
   
   onSave(){
     //Save inputs to variables
+    this.apiKeyService.setApiKey(this.geminiAPI);
     this.router.navigate(['/']);
   }
 }

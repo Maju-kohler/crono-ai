@@ -25,13 +25,17 @@ h1{
 
 .left{
   position: absolute;
-  left: 25px;
+  left: 50px;
   top: 50%;
-  transform: translateY(-50%);
+  transition: transform 250ms;
+}
+
+.left:hover{
+  transform: translateX(-10px);
 }
 
 .scroll-cards{
-  width: 70%;
+  width: 62%;
   height: 100%;
   margin: 0 auto;
   white-space: nowrap;
@@ -69,10 +73,15 @@ h1{
 
 .right {
   position: absolute;
-  right: 25px;
+  right: 50px;
   top: 50%;
-  transform: translateY(-50%);
+  transition: transform 250ms;
 }
+
+.right:hover{
+  transform: translateX(10px);
+}
+
 
 .left, .right{
   cursor: pointer;
