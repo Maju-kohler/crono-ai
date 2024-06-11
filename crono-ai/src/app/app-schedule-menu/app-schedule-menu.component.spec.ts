@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppScheduleMenuComponent } from './app-schedule-menu.component';
+import { AppFormComponent } from '../app-form/app-form.component';
 
 describe('AppScheduleMenuComponent', () => {
   let component: AppScheduleMenuComponent;

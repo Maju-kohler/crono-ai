@@ -1,9 +1,18 @@
 <!-- TODO: pegar o nome da variavel 'Schedule's name' -->
 <h1>Schedule's name</h1> 
 
-<div class="cards-container">
-<!-- TODO: ver como fazer os cards a partir de um objeto -->
+<div class="cover">
+  <input type="image" class="left" src="../../assets/images/leftArrow.svg" (click)="leftScroll()" />
+    <div class="scroll-cards">
+      <div *ngFor= "let task of tasks" class="card">
+        <p class="day"><strong>{{ task.day }}</strong></p>
+        <p class="task-title" style="color: #F15156;"><strong>Task</strong></p>
+        <p class="task"> {{ task.task }} </p>
+      </div>
+    </div>
+  <input type="image" class="right" src="../../assets/images/rightArrow.svg" (click)="rightScroll()" />
 </div>
+
 
 <div class="button-container">
   <button class= "onImport" (click)="onImport()">Import!</button>

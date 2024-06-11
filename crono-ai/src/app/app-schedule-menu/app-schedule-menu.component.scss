@@ -1,0 +1,116 @@
+$background: #FEFAE0;
+$primary: #211A1D;
+$my-blue: #3993DD;
+$my-red: #F15156;
+
+
+@font-face {
+  font-family: 'Lexend Exa';
+  src: url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+  font-weight: 600;
+  font-style: semibold;
+}
+
+h1{
+  font-family:'Lexend Exa';
+  font-size: 50px;
+  margin: 2.5rem;
+}
+
+.cover{
+  padding: 0px 30px;
+  position: relative;
+}
+
+.left{
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scroll-cards{
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+}
+
+.card {
+  width: 270px;
+  height: 430px;
+  margin: 1px 10px;
+  padding: 10px;
+  overflow: hidden;
+
+  background-color: $background;
+  border: 3px solid $primary;
+  border-radius: 15px;
+
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Lexend Exa';
+
+  flex: 0 0 auto ;
+  float: none;
+  display: inline-block;
+}
+
+.card p {
+  white-space: normal;
+  word-wrap: break-word;
+  font-family: 'Lexend Exa'
+}
+
+.right {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left, .right{
+  cursor: pointer;
+}
+
+.button-container{
+  position: fixed;
+  bottom: 0.1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px
+}
+
+button {
+  font-family: 'Lexend Exa';
+  width: 20%;
+  height: 60px;
+  margin: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 250ms;
+}
+
+button:hover{
+  transform: translateY(-3px);
+}
+
+.onCancel {
+  background-color: $my-red;
+  color: #fff;
+}
+
+.onImport {
+  background-color: #007bff;
+  color: #fff;
+}
+
