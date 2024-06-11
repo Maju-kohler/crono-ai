@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AppFormComponent } from '../app-form/app-form.component';
+import { ScheduleService } from '../schedule.service';
 
 interface Task {
   day: string;
@@ -21,8 +22,9 @@ export class AppScheduleMenuComponent {
   @Input() data: any;
 
   tasks: Task[] = [];
+  scheduleName: string = '';
 
-  constructor(private router: Router){ 
+  constructor(private router: Router, private scheduleService: ScheduleService){ 
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as {data: { day: string, task: string }[] };
     if (state && state.data) {
@@ -30,7 +32,11 @@ export class AppScheduleMenuComponent {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.scheduleService.scheduleName$.subscribe(name => {
+      this.scheduleName = name;
+    });
+  }
 
   onCancel(){
     this.router.navigate(['/']);
