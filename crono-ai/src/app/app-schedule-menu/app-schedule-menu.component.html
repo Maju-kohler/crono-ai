@@ -1,14 +1,36 @@
 <h1>{{ scheduleName }}</h1> 
- <!-- <h1>Schedule</h1> -->
 
 <div class="cover">
   <input type="image" class="left" src="../../assets/images/leftArrow.svg" (click)="leftScroll()" />
     <div class="scroll-cards">
-      <div *ngFor= "let task of tasks" class="card">
-        <p class="day"><strong>{{ task.day }}</strong></p>
-        <p class="task-title" style="color: #F15156;"><strong>Task</strong></p>
-        <p class="task"> {{ task.task }} </p>
+      <div *ngFor="let task of tasks; let i=index" class="card">
+        <div *ngIf="isEditing[i]">
+          <div class="card-content">
+            <input class="day" type="date" [(ngModel)]="task.day" name="date" >
+            <p class="task-title" style="color: #F15156;"><strong>Task</strong></p>
+            <textarea class="task" [(ngModel)]="task.task" name="task" rows="5"></textarea>
+            
+            <div class="card-buttons">
+              <input type="image" class="saveButton" src="../../assets/images/check-mark.svg" (click)="saveTask(i, task)" />
+              <input type="image" class="cancelButton" src="../../assets/images/circle-x.svg" (click)="cancelEditing(i)" /> 
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!isEditing[i]">
+          <div class="card-content">
+            <p class="day"><strong>{{ task.day }}</strong></p>
+            <p class="task-title" style="color: #F15156;"><strong>Task</strong></p>
+            <p class="task"> {{ task.task }} </p>
+
+            <div class="card-buttons">
+              <input type="image" class="editButton" src="../../assets/images/pencil-create.svg" (click)="enableEditing(i)" />
+              <input type="image" class="deleteButton" src="../../assets/images/trash.svg" (click)="deleteTask(i)" />
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   <input type="image" class="right" src="../../assets/images/rightArrow.svg" (click)="rightScroll()" />
 </div>

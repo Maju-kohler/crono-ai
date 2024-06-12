@@ -62,13 +62,82 @@ h1{
 
   flex: 0 0 auto ;
   float: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card p {
   white-space: normal;
   word-wrap: break-word;
   font-family: 'Lexend Exa'
+}
+
+.task{
+  border: 1px solid blue;
+  height: 150px;
+}
+
+.card-content{
+  // flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //height: calc(100% - 60%);
+}
+
+.card-content input, 
+.card-content textarea {
+  background-color: $background;
+  margin: 5px 0;
+  width: 90%; //adjust
+  padding: 8px;
+  font-size: 18px;
+  font-family: 'Lexend Exa';
+  border: 2px solid $primary;
+  border-radius: 5px;
+  resize: none;
+}
+
+.card-content p {
+  background-color: $background;
+  margin: 5px 0;
+  width: 90%; //adjust
+  padding: 8px;
+  font-size: 24px;
+  font-family: 'Lexend Exa';
+  border-radius: 5px;
+  resize: none;
+  border: none;
+}
+
+.card-content textarea{
+  height: 150px;
+}
+
+.card-buttons{
+  margin-top: 3.5rem;
+  bottom: 10px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-buttons input,.card-buttons button{
+  width: 24px;
+  font-family: 'Lexend Era';
+  border: 2px solid $primary;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+.card-buttons .editButton, .card-buttons .saveButton{
+  background-color: $my-blue;
+}
+
+.card-buttons .deleteButton, .card-buttons .cancelButton{
+  background-color: $my-red;
 }
 
 .right {
@@ -88,7 +157,6 @@ h1{
 }
 
 .button-container{
-  position: fixed;
   bottom: 0.1rem;
   left: 0;
   right: 0;
@@ -97,7 +165,7 @@ h1{
   padding: 10px
 }
 
-button {
+.button-container button {
   font-family: 'Lexend Exa';
   width: 20%;
   height: 60px;
@@ -109,7 +177,7 @@ button {
   transition: transform 250ms;
 }
 
-button:hover{
+.button-container button:hover{
   transform: translateY(-3px);
 }
 
