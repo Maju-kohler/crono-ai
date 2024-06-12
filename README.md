@@ -1,5 +1,5 @@
 # Crono-ai
-This is an schedule generator web app! Using Google API Gemini to generate schedules according to your inputs automatically.  
+This is an schedule generator web app! Using Google Gemini API to generate schedules according to your inputs automatically.  
 
 This was a two week challenge to develop a simple, yet useful, project using Gemini API to create something with generative AI. It is completely for educational purposes, so, feel free to fork or clone it and try it out!
 
